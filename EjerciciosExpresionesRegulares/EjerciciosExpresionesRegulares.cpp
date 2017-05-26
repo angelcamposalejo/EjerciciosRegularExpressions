@@ -8,18 +8,15 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE, LPTSTR cmdLine, int cmdSho
 
 void EjerciciosExpresionesRegulares::Window_Open(Win::Event& e)
 {
+	this->tbxEntrada.Text = L"hello world is the hello world program";
+
 }
 
-void EjerciciosExpresionesRegulares::btMatch_Click(Win::Event& e)
+
+void EjerciciosExpresionesRegulares::btReemplazar_Click(Win::Event& e)
 {
-	tr1::wregex reg(L"[0,1,2,3,4,5,6,7,8,9]");
-	if (tr1::regex_match(tbxEntrada.Text, reg) == true)
-	{
-		tbxEntrada.ShowBalloonTip(L"Text Regex", L"Entrada correcta", TTI_INFO);
-	}
-	else
-	{
-		tbxEntrada.ShowBalloonTip(L"Text Regex", L"Entrada incorrecta", TTI_ERROR);
-	}
+	tr1::wregex reg(L"hello");
+	wstring reemplazar(L"hola");
+	tbxSalida.Text = tr1::regex_replace(tbxEntrada.Text, reg, reemplazar);
 }
 
